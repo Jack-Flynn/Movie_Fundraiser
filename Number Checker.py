@@ -17,4 +17,5 @@ def int_check(question, low_num, high_num):
             print(error)
 
 
-age = int_check("age.", 12, 50)
+while True:
+    number = int_check("number.", 12, 125)
