@@ -26,9 +26,7 @@ def int_check(question, low_num, high_num):
 yes = ["yes", "y", "yep", "accept", "yeah", "yea"]
 no = ["no", "n", "nope", "nah", "deny", "nay"]
 
-name = input("What is your name?")
+name = input("What is your name?").title()
 
 age = int_check("How old are you?", 12, 125)
 
-print(name)
-print(age)
