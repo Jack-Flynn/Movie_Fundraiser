@@ -11,14 +11,24 @@ def int_check(question, low_num, high_num):
             if low_num <= response <= high_num:
                 return response
             else:
-                print(error)
-
+                try_again = input("This value is outside the range (12, 125), did you want to re input your response?").lower()
+                if try_again in yes:
+                    print(error)
+                elif try_again in no:
+                    break
+                else:
+                    print("I'll assume that means no")
+                    break
         except ValueError:
             print(error)
 
+
+yes = ["yes", "y", "yep", "accept", "yeah", "yea"]
+no = ["no", "n", "nope", "nah", "deny", "nay"]
 
 name = input("What is your name?")
 
 age = int_check("How old are you?", 12, 125)
 
-
+print(name)
+print(age)
