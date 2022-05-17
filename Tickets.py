@@ -25,6 +25,7 @@ def age_check(question, low_num, high_num):
 
 yes = ["yes", "y", "yep", "accept", "yeah", "yea"]
 no = ["no", "n", "nope", "nah", "deny", "nay"]
+ticket_prices = ["7.50", "10.50", "6.50"]
 
 name = input("What is your name?").title()
 
