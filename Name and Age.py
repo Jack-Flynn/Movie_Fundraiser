@@ -23,10 +23,20 @@ def age_check(question, low_num, high_num):
             print(error)
 
 
+def blank_check(question):
+    valid = False
+    while not valid:
+        response = input(question)
+        if response != "":
+            return response
+        else:
+            print("Your answer cannot be blank, please try again.")
+
+
 yes = ["yes", "y", "yep", "accept", "yeah", "yea"]
 no = ["no", "n", "nope", "nah", "deny", "nay"]
 
-name = input("What is your name?").title()
+name = blank_check("What is your name?").title()
 
 age = age_check("How old are you?", 12, 125)
 
