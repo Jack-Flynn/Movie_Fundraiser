@@ -27,7 +27,6 @@ yes = ["yes", "y", "yep", "accept", "yeah", "yea"]
 no = ["no", "n", "nope", "nah", "deny", "nay"]
 ticket_prices = ["7.50", "10.50", "6.50"]
 
-name = input("What is your name?").title()
 
 age = age_check("How old are you?", 12, 125)
 
