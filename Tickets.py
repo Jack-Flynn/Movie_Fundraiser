@@ -21,23 +21,18 @@ def age_check(question, low_num, high_num):
             print(error)
 
 
-def ticket_calculation(question):
-    error = "please enter yes or no"
-
+def yesno (question):
+    error = "Please enter yes or no"
     valid = False
     while not valid:
         try:
-            response = input(question).lower()
-            if response == "yes":
-                if 12 >= age <= 15:
-                    tickets = ticket_prices[0]
-                elif 16 >= age <= 64:
-                    tickets = ticket_prices[1]
-                else:
-                    tickets = ticket_prices[2]
-                return response
-            else:
+            response = input(question)
+            if response in yes:
+                break
+            elif response in no:
                 exit()
+            else:
+                print(error)
         except ValueError:
             print(error)
 
@@ -48,10 +43,16 @@ no = ["no", "n", "nope", "nah", "deny", "nay"]
 ticket_prices = [7.50, 10.50, 6.50]
 seat_count = 5
 
-
 while seat_count > 0:
     age = age_check("How old are you?", 12, 125)
-    yesno = ticket_calculation("Do you want tickets")
+    yesno("Do you want tickets?")
 
-    print("if you are {} then that will cost ${:.2f}".format(age, tickets))
+    if 12 <= age <= 15:
+        ticket_price = ticket_prices[0]
+    elif 16 <= age <= 64:
+        ticket_price = ticket_prices[1]
+    else:
+        ticket_price = ticket_prices[2]
+
+    print("if you are {} then that will cost ${:.2f}".format(age, ticket_price))
     seat_count -= 1
