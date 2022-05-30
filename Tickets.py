@@ -1,3 +1,5 @@
+
+# Functions go here
 def age_check(question, low_num, high_num):
     error = "Please enter a whole number between {} and {}".format(low_num, high_num)
     valid = False
@@ -37,12 +39,13 @@ def yesno (question):
             print(error)
 
 
-# set up lists
+# Set up lists and variables
 yes = ["yes", "y", "yep", "accept", "yeah", "yea"]
 no = ["no", "n", "nope", "nah", "deny", "nay"]
 ticket_prices = [7.50, 10.50, 6.50]
 seat_count = 5
 
+# Main routine goes here
 while seat_count > 0:
     age = age_check("How old are you?", 12, 125)
     yesno("Do you want tickets?")
@@ -54,5 +57,6 @@ while seat_count > 0:
     else:
         ticket_price = ticket_prices[2]
 
+    # Print the results of everything
     print("if you are {} then that will cost ${:.2f}".format(age, ticket_price))
     seat_count -= 1
