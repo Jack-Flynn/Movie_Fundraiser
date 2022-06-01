@@ -1,40 +1,15 @@
-
 # Functions go here
-def age_check(question, low_num, high_num):
-    error = "Please enter a whole number between {} and {}".format(low_num, high_num)
+def age_check(question):
+    error = "Please enter a whole number between 12 and 125"
     valid = False
     while not valid:
 
         try:
             response = int(input(question))
-
-            if low_num <= response <= high_num:
-                return response
-            else:
-                try_again = input("This value is outside the range (12, 125), did you want to re input your response?").lower()
-                if try_again in yes:
-                    print(error)
-                elif try_again in no:
-                    exit()
-                else:
-                    print("I'll assume that means no")
-                    exit()
-        except ValueError:
-            print(error)
-
-
-def yesno (question):
-    error = "Please enter yes or no"
-    valid = False
-    while not valid:
-        try:
-            response = input(question)
-            if response in yes:
-                break
-            elif response in no:
-                exit()
-            else:
+            if response <= 0:
                 print(error)
+            else:
+                return response
         except ValueError:
             print(error)
 
@@ -42,21 +17,42 @@ def yesno (question):
 # Set up lists and variables
 yes = ["yes", "y", "yep", "accept", "yeah", "yea"]
 no = ["no", "n", "nope", "nah", "deny", "nay"]
-ticket_prices = [7.50, 10.50, 6.50]
-seat_count = 5
 
-# Main routine goes here
-while seat_count > 0:
-    age = age_check("How old are you?", 12, 125)
-    yesno("Do you want tickets?")
+seats_remaining = 5
+ticket_count = 0
+ticket_sales = 0
 
-    if 12 <= age <= 15:
-        ticket_price = ticket_prices[0]
-    elif 16 <= age <= 64:
-        ticket_price = ticket_prices[1]
+while ticket_count < seats_remaining:
+    # Tells user how many tickets left
+    if ticket_count < seats_remaining - 1:
+        print("You have {} places left".format(seats_remaining - ticket_count))
+    # One place left
     else:
-        ticket_price = ticket_prices[2]
+        print("***You have ONE place left***")
 
-    # Print the results of everything
-    print("if you are {} then that will cost ${:.2f}".format(age, ticket_price))
-    seat_count -= 1
+    # Get age (between 12 and 130)
+    age = age_check("Age: ")
+
+    # Check age of person
+    if age < 12:
+        print("Sorry you are too young for this movie")
+        continue
+    elif age > 125:
+        print("That is very old, it looks like a mistake")
+        continue
+
+    # Adjust ticket price based on age
+    if age < 16:
+        ticket_price = 7.5
+    elif age < 65:
+        ticket_price = 10.5
+    else:
+        ticket_price = 6.5
+
+    print("That will cost {}".format(ticket_price))
+    ticket_count += 1
+    ticket_sales += ticket_price
+
+    print("We have currently sold {} worth of tickets".format(ticket_sales))
+
+print("We are out of seats now!")
